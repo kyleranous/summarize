@@ -55,6 +55,15 @@ def verbose_msg(msgtxt, verbose=False):
     if verbose:
         print(msgtxt)
 
+
+def summarize_url(url, per=0.1):
+
+    article = Article(url)
+    article.download()
+    article.parse()
+    
+    return summarize(article.text, per)
+
 def __main__():
 
     parser = argparse.ArgumentParser()
